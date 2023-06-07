@@ -7,3 +7,16 @@ before_install:
 
 script: 
   - docker run -e CI=true gileo/docker-react2 npm run test
+
+deploy:
+  provider: elasticbeanstalk
+  region: "eu-central-1"
+  app: "docker-react-3"
+  env: "Docker-react-3-env"
+  bucket_name: "elasticbeanstalk-eu-central-1-377097972767"
+  bucket_path: "docker-react-3"
+  on:
+    branch: main
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: "$AWS_SECRET_KEY"
+  #Docker-react-3-env.eba-j4qyr5kg.eu-central-1.elasticbeanstalk.com
